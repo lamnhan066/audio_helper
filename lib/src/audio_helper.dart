@@ -81,12 +81,12 @@ class AudioHelper {
   }
 
   /// Play background music list
-  void playBackgroundMusic() {
+  void playMusic() {
     _bgSoundPlayer.play();
   }
 
   /// Stop background music
-  void stopBackgroundMusic() {
+  void stopMusic() {
     _bgSoundPlayer.stop();
   }
 }
