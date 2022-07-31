@@ -1,6 +1,6 @@
-# sound_helper_example
+# audio_helper_example
 
-Demonstrates how to use the sound_helper plugin.
+Demonstrates how to use the audio_helper plugin.
 
 ## Getting Started
 

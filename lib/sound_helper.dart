@@ -1,1 +1,1 @@
-library sound_helper;
+library audio_helper;

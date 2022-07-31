@@ -1,4 +1,4 @@
-# sound_helper
+# audio_helper
 
 A new Flutter plugin project.
 
