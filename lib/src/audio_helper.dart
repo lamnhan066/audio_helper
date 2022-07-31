@@ -1,9 +1,9 @@
 import 'package:just_audio/just_audio.dart';
 
-class SoundHelper {
-  static SoundHelper get instance => SoundHelper._();
+class AudioHelper {
+  static AudioHelper get instance => AudioHelper._();
 
-  SoundHelper._();
+  AudioHelper._();
 
   final _soundPlayer = AudioPlayer();
   final _bgSoundPlayer = AudioPlayer();
