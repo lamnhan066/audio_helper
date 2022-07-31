@@ -10,7 +10,6 @@ class AudioHelper {
 
   String _backgroundPrefix = '';
   String _soundPrefix = '';
-  late ConcatenatingAudioSource _playlist;
 
   bool _isInitialed = false;
   String _lastSoundName = '';
@@ -38,7 +37,7 @@ class AudioHelper {
     _backgroundPrefix = backgroundPrefix;
     _soundPrefix = soundPrefix;
 
-    _playlist = ConcatenatingAudioSource(
+    final playlist = ConcatenatingAudioSource(
       // Start loading next item just before reaching it
       useLazyPreparation: true,
       // Customise the shuffle algorithm
@@ -51,22 +50,25 @@ class AudioHelper {
       ],
     );
 
-    _soundPlayer.setVolume(soundVolume);
-    _soundPlayer.setLoopMode(LoopMode.off);
+    await Future.wait([
+      _soundPlayer.setVolume(soundVolume),
+      _soundPlayer.setLoopMode(LoopMode.off),
+      _bgSoundPlayer.setVolume(backgroundMusicVolume),
+      _bgSoundPlayer.setLoopMode(LoopMode.all),
+    ]);
 
-    _bgSoundPlayer.setVolume(backgroundMusicVolume);
-    _bgSoundPlayer.setLoopMode(LoopMode.all);
-
-    _bgSoundPlayer.setAudioSource(
-      _playlist,
+    await _bgSoundPlayer.setAudioSource(
+      playlist,
       initialPosition: Duration.zero,
     );
   }
 
   /// Dispose sound helper
   Future<void> dispose() async {
-    _soundPlayer.dispose();
-    _bgSoundPlayer.dispose();
+    await Future.wait([
+      _soundPlayer.dispose(),
+      _bgSoundPlayer.dispose(),
+    ]);
   }
 
   /// name with extension. Ex: bound.mp3
