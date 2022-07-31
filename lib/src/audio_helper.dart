@@ -1,8 +1,7 @@
 import 'package:just_audio/just_audio.dart';
 
+/// This all methods must be static to make it works
 class AudioHelper {
-  static AudioHelper get instance => AudioHelper._();
-
   AudioHelper._();
 
   static final _soundPlayer = AudioPlayer();
