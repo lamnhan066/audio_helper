@@ -8,14 +8,14 @@ class AudioHelper {
   static final _soundPlayer = AudioPlayer();
   static final _bgSoundPlayer = AudioPlayer();
 
-  String _backgroundPrefix = '';
-  String _soundPrefix = '';
+  static String _backgroundPrefix = '';
+  static String _soundPrefix = '';
 
-  bool _isInitialed = false;
-  String _lastSoundName = '';
+  static bool _isInitialed = false;
+  static String _lastSoundName = '';
 
   /// Initial sound helper
-  Future<void> initial({
+  static Future<void> initial({
     // Prefix path for background music
     String backgroundPrefix = 'assets/audio/music/',
 
@@ -64,7 +64,7 @@ class AudioHelper {
   }
 
   /// Dispose sound helper
-  Future<void> dispose() async {
+  static Future<void> dispose() async {
     await Future.wait([
       _soundPlayer.dispose(),
       _bgSoundPlayer.dispose(),
@@ -72,7 +72,7 @@ class AudioHelper {
   }
 
   /// name with extension. Ex: bound.mp3
-  void playSound(String name) async {
+  static void playSound(String name) async {
     if (_lastSoundName != name) {
       await _soundPlayer.setAsset('$_soundPrefix$name');
       _lastSoundName = name;
@@ -83,12 +83,12 @@ class AudioHelper {
   }
 
   /// Play background music list
-  void playMusic() {
+  static void playMusic() {
     _bgSoundPlayer.play();
   }
 
   /// Stop background music
-  void stopMusic() {
+  static void stopMusic() {
     _bgSoundPlayer.stop();
   }
 }
