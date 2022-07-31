@@ -5,8 +5,8 @@ class AudioHelper {
 
   AudioHelper._();
 
-  final _soundPlayer = AudioPlayer();
-  final _bgSoundPlayer = AudioPlayer();
+  static final _soundPlayer = AudioPlayer();
+  static final _bgSoundPlayer = AudioPlayer();
 
   String _backgroundPrefix = '';
   String _soundPrefix = '';
