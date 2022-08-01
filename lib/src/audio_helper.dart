@@ -22,7 +22,7 @@ class AudioHelper {
     String soundPrefix = 'assets/audio/sound/',
 
     // Name with extension. Ex: ['love-story.mp3']
-    List<String>? backgroundMusicNames,
+    List<String> backgroundMusicNames = const [],
 
     // Volume for sound. 0 -> 1
     double soundVolume = 1.0,
@@ -43,9 +43,8 @@ class AudioHelper {
       shuffleOrder: DefaultShuffleOrder(),
       // Specify the playlist items
       children: [
-        if (backgroundMusicNames != null)
-          for (final name in backgroundMusicNames)
-            AudioSource.uri(Uri.parse('asset:///$_backgroundPrefix$name')),
+        for (final name in backgroundMusicNames)
+          AudioSource.uri(Uri.parse('asset:///$_backgroundPrefix$name')),
       ],
     );
 
