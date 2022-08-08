@@ -1,7 +1,8 @@
+import 'package:flutter/widgets.dart';
 import 'package:just_audio/just_audio.dart';
 
 /// This all methods must be static to make it works
-class AudioHelper {
+class AudioHelper extends WidgetsBindingObserver {
   AudioHelper._();
 
   static final _soundPlayer = AudioPlayer();
@@ -13,7 +14,31 @@ class AudioHelper {
   static bool _isInitialed = false;
   static String _lastSoundName = '';
 
-  /// Initial sound helper
+  static bool _isPlayMusic = false;
+
+  static final _registerObserver = _RegisterObserver(
+    onStateChanged: (state) {
+      if (_isPlayMusic) {
+        if (state == AppLifecycleState.resumed) {
+          playMusic();
+        } else {
+          _pauseMusic();
+        }
+      }
+    },
+  );
+
+  /// Initial audio helper
+  ///
+  /// `backgroundPrefix` the prefix path of the background music
+  ///
+  /// `soundPrefix` the prefix path of sounds
+  ///
+  /// `backgroundMusicNames` all the background music names without prefix
+  ///
+  /// `soundVolume` volume of sounds
+  ///
+  /// `musicVolume` volume of the background music
   static Future<void> initial({
     // Prefix path for background music
     String backgroundPrefix = 'assets/audio/music/',
@@ -28,7 +53,7 @@ class AudioHelper {
     double soundVolume = 1.0,
 
     // Volume for background music. 0 -> 1
-    double backgroundMusicVolume = 1.0,
+    double musicVolume = 1.0,
   }) async {
     if (_isInitialed) return;
     _isInitialed = true;
@@ -51,7 +76,7 @@ class AudioHelper {
     await Future.wait([
       _soundPlayer.setVolume(soundVolume),
       _soundPlayer.setLoopMode(LoopMode.off),
-      _bgSoundPlayer.setVolume(backgroundMusicVolume),
+      _bgSoundPlayer.setVolume(musicVolume),
       _bgSoundPlayer.setLoopMode(LoopMode.all),
     ]);
 
@@ -61,15 +86,16 @@ class AudioHelper {
     );
   }
 
-  /// Dispose sound helper
+  /// Dispose audio helper
   static Future<void> dispose() async {
+    _registerObserver.register();
     await Future.wait([
       _soundPlayer.dispose(),
       _bgSoundPlayer.dispose(),
     ]);
   }
 
-  /// name with extension. Ex: bound.mp3
+  /// Play sound, `name` is the file name with extension. Ex: bound.mp3
   static void playSound(String name) async {
     if (_lastSoundName != name) {
       await _soundPlayer.setAsset('$_soundPrefix$name');
@@ -80,13 +106,55 @@ class AudioHelper {
     _soundPlayer.play();
   }
 
-  /// Play background music list
+  /// Play background music
   static void playMusic() {
+    _isPlayMusic = true;
+    _registerObserver.register();
     _bgSoundPlayer.play();
   }
 
   /// Stop background music
   static void stopMusic() {
+    _isPlayMusic = false;
     _bgSoundPlayer.stop();
+  }
+
+  /// Next background music song
+  static void nextMusic() {
+    _bgSoundPlayer.seekToNext();
+  }
+
+  /// Pause the background music
+  static void _pauseMusic() {
+    _bgSoundPlayer.stop();
+  }
+}
+
+/// Register the auto stop when users leave the app
+class _RegisterObserver extends WidgetsBindingObserver {
+  final void Function(AppLifecycleState state) onStateChanged;
+  bool _isRegisteredBindingObserver = false;
+
+  _RegisterObserver({required this.onStateChanged});
+
+  void register() {
+    if (!_isRegisteredBindingObserver) {
+      _isRegisteredBindingObserver = true;
+      WidgetsBinding.instance.addObserver(this);
+    }
+  }
+
+  void unRegister() {
+    if (_isRegisteredBindingObserver) {
+      _isRegisteredBindingObserver = false;
+      WidgetsBinding.instance.removeObserver(this);
+    }
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    onStateChanged(state);
   }
 }
