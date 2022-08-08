@@ -41,3 +41,5 @@ Play sound:
 ``` dart
 AudioHelper.playSound('sound.mp3');
 ```
+
+**Notice:** I've only tested this plugin on my real project, so it doesn't have any examples or tests yet.
