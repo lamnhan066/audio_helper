@@ -1,6 +1,6 @@
 name: audio_helper
 description: Help you easier to add sounds and background music to your games or apps.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/vursin/audio_helper
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  just_audio: ^0.9.28
+  just_audio: ^0.9.30
 
 dev_dependencies:
   flutter_test:

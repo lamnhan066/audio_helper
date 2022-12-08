@@ -88,7 +88,7 @@ class AudioHelper extends WidgetsBindingObserver {
 
   /// Dispose audio helper
   static Future<void> dispose() async {
-    _registerObserver.register();
+    _registerObserver.unRegister();
     await Future.wait([
       _soundPlayer.dispose(),
       _bgSoundPlayer.dispose(),
