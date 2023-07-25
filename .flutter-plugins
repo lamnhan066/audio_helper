@@ -1,10 +1,9 @@
 # This is a generated file; do not edit or check into version control.
-audio_session=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/audio_session-0.1.10/
-just_audio=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/just_audio-0.9.28/
-just_audio_web=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/just_audio_web-0.4.7/
-path_provider=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.11/
-path_provider_android=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/path_provider_android-2.0.17/
-path_provider_ios=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/path_provider_ios-2.0.11/
-path_provider_linux=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.7/
-path_provider_macos=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.6/
-path_provider_windows=/Users/thanhnhan/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.1.0/
+audio_session=/Users/thanhnhan/.pub-cache/hosted/pub.dev/audio_session-0.1.16/
+just_audio=/Users/thanhnhan/.pub-cache/hosted/pub.dev/just_audio-0.9.34/
+just_audio_web=/Users/thanhnhan/.pub-cache/hosted/pub.dev/just_audio_web-0.4.8/
+path_provider=/Users/thanhnhan/.pub-cache/hosted/pub.dev/path_provider-2.0.14/
+path_provider_android=/Users/thanhnhan/.pub-cache/hosted/pub.dev/path_provider_android-2.0.24/
+path_provider_foundation=/Users/thanhnhan/.pub-cache/hosted/pub.dev/path_provider_foundation-2.2.1/
+path_provider_linux=/Users/thanhnhan/.pub-cache/hosted/pub.dev/path_provider_linux-2.1.10/
+path_provider_windows=/Users/thanhnhan/.pub-cache/hosted/pub.dev/path_provider_windows-2.1.5/
