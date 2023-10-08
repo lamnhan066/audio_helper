@@ -28,31 +28,31 @@ class AudioHelper extends WidgetsBindingObserver {
     },
   );
 
-  /// Initial audio helper
+  /// Initial audio helper.
   ///
-  /// `backgroundPrefix` the prefix path of the background music
+  /// `backgroundPrefix` the prefix path of the background music.
   ///
-  /// `soundPrefix` the prefix path of sounds
+  /// `soundPrefix` the prefix path of sounds.
   ///
-  /// `backgroundMusicNames` all the background music names without prefix
+  /// `backgroundMusicNames` all the background music names without prefix.
   ///
-  /// `soundVolume` volume of sounds
+  /// `soundVolume` volume of sounds.
   ///
-  /// `musicVolume` volume of the background music
+  /// `musicVolume` volume of the background music.
   static Future<void> initial({
-    // Prefix path for background music
+    /// Prefix path for background music.
     String backgroundPrefix = 'assets/audio/music/',
 
-    // Prefix path for sound
+    /// Prefix path for sound.
     String soundPrefix = 'assets/audio/sound/',
 
-    // Name with extension. Ex: ['love-story.mp3']
+    /// Name with extension. Ex: ['love-story.mp3'].
     List<String> backgroundMusicNames = const [],
 
-    // Volume for sound. 0 -> 1
+    /// Volume for sound. 0 -> 1.
     double soundVolume = 1.0,
 
-    // Volume for background music. 0 -> 1
+    /// Volume for background music. 0 -> 1.
     double musicVolume = 1.0,
   }) async {
     if (_isInitialed) return;

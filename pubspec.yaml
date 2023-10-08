@@ -1,7 +1,7 @@
 name: audio_helper
 description: Help you easier to add sounds and background music to your games or apps.
-version: 0.1.0
-homepage: https://github.com/vursin/audio_helper
+version: 0.1.1
+homepage: https://github.com/lamnhan066/audio_helper
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
@@ -10,12 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  just_audio: ^0.9.34
+  just_audio: ^0.9.35
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.2
+  flutter_lints: ^2.0.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
