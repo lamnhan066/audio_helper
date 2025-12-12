@@ -61,18 +61,6 @@ class AudioHelper extends WidgetsBindingObserver {
     _backgroundPrefix = backgroundPrefix;
     _soundPrefix = soundPrefix;
 
-    final playlist = ConcatenatingAudioSource(
-      // Start loading next item just before reaching it
-      useLazyPreparation: true,
-      // Customise the shuffle algorithm
-      shuffleOrder: DefaultShuffleOrder(),
-      // Specify the playlist items
-      children: [
-        for (final name in backgroundMusicNames)
-          AudioSource.uri(Uri.parse('asset:///$_backgroundPrefix$name')),
-      ],
-    );
-
     await Future.wait([
       _soundPlayer.setVolume(soundVolume),
       _soundPlayer.setLoopMode(LoopMode.off),
@@ -80,8 +68,11 @@ class AudioHelper extends WidgetsBindingObserver {
       _bgSoundPlayer.setLoopMode(LoopMode.all),
     ]);
 
-    await _bgSoundPlayer.setAudioSource(
-      playlist,
+    await _bgSoundPlayer.setAudioSources(
+      [
+        for (final name in backgroundMusicNames)
+          AudioSource.uri(Uri.parse('asset:///$_backgroundPrefix$name')),
+      ],
       initialPosition: Duration.zero,
     );
   }
@@ -102,8 +93,9 @@ class AudioHelper extends WidgetsBindingObserver {
       _lastSoundName = name;
     }
 
+    await _soundPlayer.pause();
     await _soundPlayer.seek(Duration.zero);
-    _soundPlayer.play();
+    await _soundPlayer.play();
   }
 
   /// Play background music
