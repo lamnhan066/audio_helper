@@ -1,11 +1,11 @@
 name: audio_helper
 description: Help you easier to add sounds and background music to your games or apps.
-version: 0.1.1
+version: 0.2.0
 homepage: https://github.com/lamnhan066/audio_helper
 
 environment:
-  sdk: ">=2.18.0 <4.0.0"
-  flutter: ">=3.3.0"
+  sdk: ^3.6.0
+  flutter: ">=3.27.0"
 
 dependencies:
   flutter:

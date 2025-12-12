@@ -1,3 +1,9 @@
+## 0.2.0
+
+* Bump just_audio to 0.10.5.
+* Update sdk: ^3.6.0, flutter: ">=3.27.0".
+* Pause the show before playing to make it work as expected on the web.
+
 ## 0.1.1
 
 * Update comments.
